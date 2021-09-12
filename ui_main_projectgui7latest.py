@@ -107,33 +107,72 @@ class Ui_MainWindow(object):
         db.child("Product Type").child("Product B").update({"Total Produced": tbp.val() + self.show_resultB()})
         db.child("Product Type").child("Product C").update({"Total Produced": tcp.val() + self.show_resultC()})
         db.child("ID").update({"Ordercount": toc.val()+1})
-        print(tpid.val())
+        #print(tpid.val())
         #orderid+=1
-        print(self.show_resultA())
+        #print(self.show_resultA())
 
        
         now = datetime.datetime.now()
         timenow=int(now.strftime("%Y%m%d%H%M%S%f")[:-4])
-        print(type(timenow))
+        #print(type(timenow))
 
-        list=[]
+        listA=[]
         for i in range(self.show_resultA()):
             #i++
-            list.append(i)
-        print(list)
+            listA.append(i)
+        #print(listA)
         #print(list[0])
-        for i in range(len(list)):
-            print(list[i])
+        #for i in range(len(listA)):
+        #    print(listA[i])
         
         #length=len(list)
-        for i in range(len(list)):
+        for i in range(len(listA)):
             #for j in len(i):
-            oid = db.child("OrderID").child(timenow+i).set(i)
-            
+            aid = str(timenow+i) + "A" + str(i)
+            oid = db.child("Allproducts").child("ListAproducts").child(timenow).child(timenow+i).set(aid)
+            #db.child("Allproducts").child("ListAproducts").child(timenow).child(timenow+i).update({"i": aid})
             i+=1
-            #db.child("OrderID").child("child2").set(i)
-            print(i)
-            print(oid)
+            
+            #print(i)
+
+        listB=[]
+        for i in range(self.show_resultB()):
+            #i++
+            listB.append(i)
+        #print(listB)
+        #print(list[0])
+        # for i in range(len(listB)):
+        #     print(listB[i])
+        
+        #length=len(list)
+        for i in range(len(listB)):
+            #for j in len(i):
+            bid = str(timenow+i) + "B" + str(i)
+            oid = db.child("Allproducts").child("ListBproducts").child(timenow).child(timenow+i).set(bid)
+            #db.child("Allproducts").child("ListBproducts").child(timenow).child(timenow+i).update({"i": bid})
+            i+=1
+            #print(bns)
+            
+            #print(i)    
+        
+        listC=[]
+        for i in range(self.show_resultC()):
+            #i++
+            listC.append(i)
+        #print(listC)
+        #print(list[0])
+        #for i in range(len(listC)):
+            #print(listC[i])
+        
+        #length=len(list)
+        for i in range(len(listC)):
+            #for j in len(i):
+            cid = str(timenow+i) + "C" + str(i)
+            oid = db.child("Allproducts").child("ListCproducts").child(timenow).child(timenow+i).set(cid)
+            #db.child("Allproducts").child("ListCproducts").child(timenow).child(timenow+i).update({"i": cid})
+            i+=1
+            
+            #print(i)       
 
         # productida_final = productida
         # productida_final.insert(-1,productida)
