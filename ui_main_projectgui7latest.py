@@ -77,6 +77,10 @@ orderid = 00000000
 class Ui_MainWindow(object):
     # adding action to the spin box
 
+    now = datetime.datetime.now()
+    global timenow
+    timenow = int(now.strftime("%Y%m%d%H%M%S%f")[:-4])
+
     def show_resultA(self):
         # getting current value
         valueA = self.ProductA.value()
@@ -92,6 +96,16 @@ class Ui_MainWindow(object):
         valueC = self.ProductC.value()
         return valueC
 
+    def search_clicked(self):   
+
+
+        self.update()
+        firebase = pyrebase.initialize_app(firebaseConfig)
+
+        db = firebase.database() 
+
+        abc = db.child("Allproducts").child("ListAproducts").get()
+        print(abc.val())
 
     def button_clicked(self):
         #self.label.setText("you pressed the button")
@@ -100,6 +114,7 @@ class Ui_MainWindow(object):
         firebase = pyrebase.initialize_app(firebaseConfig)
 
         db = firebase.database()
+        
 
 
 
@@ -112,8 +127,7 @@ class Ui_MainWindow(object):
         #print(self.show_resultA())
 
        
-        now = datetime.datetime.now()
-        timenow=int(now.strftime("%Y%m%d%H%M%S%f")[:-4])
+        
         #print(type(timenow))
 
         listA=[]
@@ -402,17 +416,17 @@ class Ui_MainWindow(object):
         self.lineEdit_4 = QLineEdit(self.Home)
         self.lineEdit_4.setObjectName(u"lineEdit_4")
         self.lineEdit_4.setGeometry(QRect(140, 30, 631, 22))
-        self.tableWidget = QTableWidget(self.Home)
-        if (self.tableWidget.columnCount() < 3):
-            self.tableWidget.setColumnCount(3)
-        __qtablewidgetitem = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
-        __qtablewidgetitem1 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
-        __qtablewidgetitem2 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
-        self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setGeometry(QRect(200, 180, 351, 192))
+        # self.tableWidget = QTableWidget(self.Home)
+        # if (self.tableWidget.columnCount() < 3):
+        #     self.tableWidget.setColumnCount(3)
+        # __qtablewidgetitem = QTableWidgetItem()
+        # self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        # __qtablewidgetitem1 = QTableWidgetItem()
+        # self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        # __qtablewidgetitem2 = QTableWidgetItem()
+        # self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        # self.tableWidget.setObjectName(u"tableWidget")
+        # self.tableWidget.setGeometry(QRect(200, 180, 351, 192))
         self.lineEdit_5 = QLineEdit(self.Home)
         self.lineEdit_5.setObjectName(u"lineEdit_5")
         self.lineEdit_5.setGeometry(QRect(150, 130, 113, 22))
@@ -576,6 +590,7 @@ class Ui_MainWindow(object):
         #self.b1 = QtWidgets.QPushButton(self)
        # self.b1.setText("click me!")
         self.pushButton.clicked.connect(self.button_clicked)
+        self.pushButton_2.clicked.connect(self.search_clicked)
         
          
 
@@ -610,14 +625,14 @@ class Ui_MainWindow(object):
         self.lineEdit_2.setText(QCoreApplication.translate("MainWindow", u"Product B", None))
         self.lineEdit_3.setText(QCoreApplication.translate("MainWindow", u"Product C", None))
         self.lineEdit_4.setText(QCoreApplication.translate("MainWindow", u"                                                        INDUSTRY 4.0 FACTORY LAYOUT", None))
-        ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Product ID", None));
-        ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Order ID", None));
-        ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Product Type", None));
-        self.label.setText(QCoreApplication.translate("MainWindow", u"Search Product ID", None))
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"Search Order ID", None))
+        # ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
+        # ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Product ID", None));
+        # ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
+        # ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Order ID", None));
+        # ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
+        # ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Product Type", None));
+        self.label.setText(QCoreApplication.translate("MainWindow", u"Search ", None))
+        #self.label_2.setText(QCoreApplication.translate("MainWindow", u"Search Order ID", None))
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Search", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"Product Type", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"Quantity", None))
