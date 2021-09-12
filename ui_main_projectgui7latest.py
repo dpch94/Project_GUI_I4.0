@@ -16,7 +16,7 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
 from PyQt5 import QtWidgets
 from PyQt5.QtCore import QTimer, QThread, pyqtSignal
 from PySide2.QtWidgets import *
-
+import datetime
 import pyrebase
 
 #Initialize Firebase
@@ -111,15 +111,33 @@ class Ui_MainWindow(object):
         #orderid+=1
         print(self.show_resultA())
 
-        productida=[]
+       
+        now = datetime.datetime.now()
+        timenow=int(now.strftime("%Y%m%d%H%M%S%f")[:-4])
+        print(type(timenow))
+
+        list=[]
         for i in range(self.show_resultA()):
             #i++
-            productida.append(i)
-        print(productida)
+            list.append(i)
+        print(list)
+        #print(list[0])
+        for i in range(len(list)):
+            print(list[i])
+        
+        #length=len(list)
+        for i in range(len(list)):
+            #for j in len(i):
+            oid = db.child("OrderID").child(timenow+i).set(i)
+            
+            i+=1
+            #db.child("OrderID").child("child2").set(i)
+            print(i)
+            print(oid)
 
-        productida_final = productida
-        productida_final.insert(-1,productida)
-        print(productida_final)
+        # productida_final = productida
+        # productida_final.insert(-1,productida)
+        # print(productida_final)
              
 
        
