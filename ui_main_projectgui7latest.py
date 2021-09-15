@@ -317,6 +317,7 @@ class Ui_MainWindow(object):
 "}")
         self.Stats = QPushButton(self.frame_top_menus)
         self.Stats.setObjectName(u"Stats")
+        sizePolicy.setHeightForWidth(self.Stats.sizePolicy().hasHeightForWidth())
         self.Stats.setGeometry(QRect(0, 388, 68, 40))
         self.Stats.setMinimumSize(QSize(0, 40))
         self.Stats.setStyleSheet(u"QPushButton {\n"
@@ -416,6 +417,10 @@ class Ui_MainWindow(object):
         self.lineEdit_4 = QLineEdit(self.Home)
         self.lineEdit_4.setObjectName(u"lineEdit_4")
         self.lineEdit_4.setGeometry(QRect(140, 30, 631, 22))
+
+
+
+        
         # self.tableWidget = QTableWidget(self.Home)
         # if (self.tableWidget.columnCount() < 3):
         #     self.tableWidget.setColumnCount(3)
@@ -574,6 +579,9 @@ class Ui_MainWindow(object):
         QListWidgetItem(self.listWidget)
         self.listWidget.setObjectName(u"listWidget")
         self.listWidget.setGeometry(QRect(30, 130, 371, 271))
+        self.pushButton_3 = QPushButton(self.Statistics)
+        self.pushButton_3.setObjectName(u"pushButton_3")
+        self.pushButton_3.setGeometry(QRect(700, 330, 93, 28))
         self.stackedWidget.addWidget(self.Statistics)
 
         self.verticalLayout_5.addWidget(self.stackedWidget)
@@ -655,6 +663,8 @@ class Ui_MainWindow(object):
         self.label_17.setText(QCoreApplication.translate("MainWindow", u"Total number of product B dispatched", None))
         self.lineEdit_21.setText(QCoreApplication.translate("MainWindow", u"                                                        INDUSTRY 4.0 FACTORY LAYOUT", None))
         self.lineEdit_22.setText(QCoreApplication.translate("MainWindow", u"TOTAL STATISTICS", None))
+
+        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Graphical View", None))
 
         __sortingEnabled = self.listWidget.isSortingEnabled()
         self.listWidget.setSortingEnabled(False)

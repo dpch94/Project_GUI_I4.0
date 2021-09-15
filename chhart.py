@@ -128,3 +128,6 @@ class ChWindow(QMainWindow):
 
 		self.setCentralWidget(chartView)
 
+
+	
+

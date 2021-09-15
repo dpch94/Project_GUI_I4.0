@@ -83,6 +83,7 @@ class MainWindow(QMainWindow):
         self.ui.Stats.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.Statistics))
 
         self.ui.pushButton.clicked.connect(restart)
+        self.ui.pushButton_3.clicked.connect(self.window2)   
 
         
 
@@ -90,6 +91,12 @@ class MainWindow(QMainWindow):
         # ########################################################################
         # self.show()
         ## ==> END ##
+
+    def window2(self):                                             # <===
+        self.w = ChWindow()
+        self.w.show()
+        self.hide()
+        
 
 
         
@@ -104,9 +111,9 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
 
     window = MainWindow()
-    window1 = ChWindow()
+    #window1 = ChWindow()
     window.show()
-    window1.show()
+    #window1.show()
 
     sys.exit(app.exec_())
 
