@@ -65,6 +65,8 @@ class ChWindow(QMainWindow):
 		self.show()
 		self.create_bar()
 
+		
+
 	def create_bar(self):
 
 		set0 = QBarSet('Prod A')

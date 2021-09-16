@@ -44,8 +44,9 @@ class MainWindow(QMainWindow):
         #QMainWindow.__init__(self)
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        
       
-        #self.show()
+        
 
 
 
@@ -92,10 +93,17 @@ class MainWindow(QMainWindow):
         # self.show()
         ## ==> END ##
 
-    def window2(self):                                             # <===
+        
+
+    def window2(self,checked):                                             # <===
+        
         self.w = ChWindow()
         self.w.show()
-        self.hide()
+        
+        
+    
+
+    
         
 
 
@@ -118,24 +126,7 @@ if __name__ == '__main__':
     sys.exit(app.exec_())
 
 
-# def main():
-#     app = QtWidgets.QApplication(sys.argv)
-    
-    
 
-#     window = MainWindow()
-#     window.show()
-    
-
-    
-
-#     sys.exit(app.exec_())
-
-
-
-
-# if __name__ == '__main__':
-#     main()
 
 
    
