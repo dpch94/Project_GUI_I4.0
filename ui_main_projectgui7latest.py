@@ -421,17 +421,17 @@ class Ui_MainWindow(object):
 
 
         
-        # self.tableWidget = QTableWidget(self.Home)
-        # if (self.tableWidget.columnCount() < 3):
-        #     self.tableWidget.setColumnCount(3)
-        # __qtablewidgetitem = QTableWidgetItem()
-        # self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
-        # __qtablewidgetitem1 = QTableWidgetItem()
-        # self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
-        # __qtablewidgetitem2 = QTableWidgetItem()
-        # self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
-        # self.tableWidget.setObjectName(u"tableWidget")
-        # self.tableWidget.setGeometry(QRect(200, 180, 351, 192))
+        self.tableWidget = QTableWidget(self.Home)
+        if (self.tableWidget.columnCount() < 3):
+            self.tableWidget.setColumnCount(3)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        self.tableWidget.setObjectName(u"tableWidget")
+        self.tableWidget.setGeometry(QRect(200, 180, 351, 192))
         self.lineEdit_5 = QLineEdit(self.Home)
         self.lineEdit_5.setObjectName(u"lineEdit_5")
         self.lineEdit_5.setGeometry(QRect(150, 130, 113, 22))
@@ -441,9 +441,9 @@ class Ui_MainWindow(object):
         self.label_2 = QLabel(self.Home)
         self.label_2.setObjectName(u"label_2")
         self.label_2.setGeometry(QRect(310, 130, 111, 16))
-        self.lineEdit_6 = QLineEdit(self.Home)
-        self.lineEdit_6.setObjectName(u"lineEdit_6")
-        self.lineEdit_6.setGeometry(QRect(420, 130, 113, 22))
+        # self.lineEdit_6 = QLineEdit(self.Home)
+        # self.lineEdit_6.setObjectName(u"lineEdit_6")
+        # self.lineEdit_6.setGeometry(QRect(420, 130, 113, 22))
         self.pushButton_2 = QPushButton(self.Home)
         self.pushButton_2.setObjectName(u"pushButton_2")
         self.pushButton_2.setGeometry(QRect(30, 180, 93, 28))
@@ -633,12 +633,12 @@ class Ui_MainWindow(object):
         self.lineEdit_2.setText(QCoreApplication.translate("MainWindow", u"Product B", None))
         self.lineEdit_3.setText(QCoreApplication.translate("MainWindow", u"Product C", None))
         self.lineEdit_4.setText(QCoreApplication.translate("MainWindow", u"                                                        INDUSTRY 4.0 FACTORY LAYOUT", None))
-        # ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
-        # ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Product ID", None));
-        # ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
-        # ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Order ID", None));
-        # ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
-        # ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Product Type", None));
+        ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Product ID", None));
+        ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Order ID", None));
+        ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Product Type", None));
         self.label.setText(QCoreApplication.translate("MainWindow", u"Search ", None))
         #self.label_2.setText(QCoreApplication.translate("MainWindow", u"Search Order ID", None))
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Search", None))
