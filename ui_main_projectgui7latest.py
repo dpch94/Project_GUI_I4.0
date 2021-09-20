@@ -104,19 +104,34 @@ class Ui_MainWindow(object):
 
         db = firebase.database() 
 
-        abc = db.child("Allproducts").get().val()
+        #abc = db.child("Allproducts").get().val()
+        abc = db.get().val()
         #print(abc.val())
         dabc = dict(abc)
-        #print(dabc)
+        #print(dabc.keys())
+
+        #print(dabc["Allproducts"].keys())
 
         row = 0  
         self.tableWidget.setRowCount(len(dabc))
-        for key in dabc:
-            #self.tableWidget.setItem(row,0, QtWidgets.QTableWidgetItem(db.child("Allproducts").child("ListAProducts").get().val()))
-            print(key)
-            print(type(key))
-            
-            #row = row+1
+
+        for k,v in dabc["Allproducts"].items():
+
+            #print(k)
+        #     # print(v)
+
+            for k1,v1 in dabc["Allproducts"][k].items():  #k1 to access order ids of all products
+
+                #print(k1)
+
+                self.tableWidget.setItem(row,0, QtWidgets.QTableWidgetItem(k1)) # to display in orderid column of table
+                row = row+1
+
+
+                
+         
+      
+        
 
 
     def button_clicked(self):
