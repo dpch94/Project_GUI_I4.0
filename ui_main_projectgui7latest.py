@@ -129,9 +129,21 @@ class Ui_MainWindow(object):
 
                 print(v1)
 
-                self.tableWidget.setItem(row,0, PySide2.QtWidgets.QTableWidgetItem(k1)) # to display in orderid column of table
-                #self.tableWidget.setItem(row,1, PySide2.QtWidgets.QTableWidgetItem(v1))
-                row = row+1
+                ListAproducts = dabc["Allproducts"]["ListAproducts"]
+#print(ListAproducts.keys())
+#print(data["Allproducts"]["ListAproducts"]["2021091217282104"])        
+
+                for i in ListAproducts.keys():
+                    ai=dabc["Allproducts"]["ListAproducts"][i].values()
+                    for j in ai:
+
+                        self.tableWidget.setItem(row,0, PySide2.QtWidgets.QTableWidgetItem(i)) # to display in orderid column of table
+                        
+                        for p in i:
+
+                            self.tableWidget.setItem(row,1, PySide2.QtWidgets.QTableWidgetItem(str(j)))
+                        
+                            row = row+1
                 #print(type(QtWidgets.QTableWidgetItem(k1)))      
         
 
