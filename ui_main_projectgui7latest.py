@@ -8,6 +8,7 @@
 ## WARNING! All changes made in this file will be lost when recompiling UI file!
 ################################################################################
 from PySide2 import QtCore, QtGui, QtWidgets
+import PySide2
 from PySide2.QtCore import (QCoreApplication, QMetaObject, QObject, QPoint,
     QRect, QSize, QUrl, Qt)
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
@@ -124,13 +125,9 @@ class Ui_MainWindow(object):
 
                 #print(k1)
 
-                self.tableWidget.setItem(row,0, QtWidgets.QTableWidgetItem(k1)) # to display in orderid column of table
+                self.tableWidget.setItem(row,0, PySide2.QtWidgets.QTableWidgetItem(k1)) # to display in orderid column of table
                 row = row+1
-
-
-                
-         
-      
+                print(type(QtWidgets.QTableWidgetItem(k1)))      
         
 
 
