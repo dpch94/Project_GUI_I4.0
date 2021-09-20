@@ -99,13 +99,25 @@ class Ui_MainWindow(object):
     def search_clicked(self):   
 
 
-        self.update()
+        #self.update()
         firebase = pyrebase.initialize_app(firebaseConfig)
 
         db = firebase.database() 
 
-        abc = db.child("Allproducts").child("ListAproducts").get()
-        print(abc.val())
+        abc = db.child("Allproducts").get().val()
+        #print(abc.val())
+        dabc = dict(abc)
+        #print(dabc)
+
+        row = 0  
+        self.tableWidget.setRowCount(len(dabc))
+        for key in dabc:
+            #self.tableWidget.setItem(row,0, QtWidgets.QTableWidgetItem(db.child("Allproducts").child("ListAProducts").get().val()))
+            print(key)
+            print(type(key))
+            
+            #row = row+1
+
 
     def button_clicked(self):
         #self.label.setText("you pressed the button")
@@ -422,14 +434,17 @@ class Ui_MainWindow(object):
 
         
         self.tableWidget = QTableWidget(self.Home)
-        if (self.tableWidget.columnCount() < 3):
-            self.tableWidget.setColumnCount(3)
+        if (self.tableWidget.columnCount() < 2):
+            self.tableWidget.setColumnCount(2)
         __qtablewidgetitem = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        self.tableWidget.setColumnWidth(0,200)
         __qtablewidgetitem1 = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
-        __qtablewidgetitem2 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        self.tableWidget.setColumnWidth(1,200)
+        self.search_clicked()
+        # __qtablewidgetitem2 = QTableWidgetItem()
+        # self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         self.tableWidget.setObjectName(u"tableWidget")
         self.tableWidget.setGeometry(QRect(200, 180, 351, 192))
         self.lineEdit_5 = QLineEdit(self.Home)
@@ -634,11 +649,11 @@ class Ui_MainWindow(object):
         self.lineEdit_3.setText(QCoreApplication.translate("MainWindow", u"Product C", None))
         self.lineEdit_4.setText(QCoreApplication.translate("MainWindow", u"                                                        INDUSTRY 4.0 FACTORY LAYOUT", None))
         ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Product ID", None));
+        ___qtablewidgetitem.setText(QCoreApplication.translate("MainWindow", u"Order ID", None));
         ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Order ID", None));
-        ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Product Type", None));
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("MainWindow", u"Product ID", None));
+        # ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
+        # ___qtablewidgetitem2.setText(QCoreApplication.translate("MainWindow", u"Product Type", None));
         self.label.setText(QCoreApplication.translate("MainWindow", u"Search ", None))
         #self.label_2.setText(QCoreApplication.translate("MainWindow", u"Search Order ID", None))
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Search", None))
