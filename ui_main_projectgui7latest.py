@@ -102,7 +102,6 @@ class Ui_MainWindow(object):
 
         #self.update()
         firebase = pyrebase.initialize_app(firebaseConfig)
-
         db = firebase.database() 
 
         #abc = db.child("Allproducts").get().val()
@@ -112,9 +111,14 @@ class Ui_MainWindow(object):
         #print(dabc.keys())
 
         #print(dabc["Allproducts"].keys())
+        
+
+        #dabc_l = len(dabc["Allproducts"]["ListAproducts"].items())
+        dabc_l = dabc["Allproducts"]["ListAproducts"]
+        #print(dabc_l)
 
         row = 0  
-        self.tableWidget.setRowCount(len(dabc))
+        self.tableWidget.setRowCount(len(dabc_l))
 
         for k,v in dabc["Allproducts"].items():
 
@@ -123,11 +127,12 @@ class Ui_MainWindow(object):
 
             for k1,v1 in dabc["Allproducts"][k].items():  #k1 to access order ids of all products
 
-                #print(k1)
+                print(v1)
 
                 self.tableWidget.setItem(row,0, PySide2.QtWidgets.QTableWidgetItem(k1)) # to display in orderid column of table
+                #self.tableWidget.setItem(row,1, PySide2.QtWidgets.QTableWidgetItem(v1))
                 row = row+1
-                print(type(QtWidgets.QTableWidgetItem(k1)))      
+                #print(type(QtWidgets.QTableWidgetItem(k1)))      
         
 
 
