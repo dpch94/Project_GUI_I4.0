@@ -125,6 +125,7 @@ class Ui_MainWindow(object):
         ListBproducts = dabc["Allproducts"]["ListBproducts"]
         ListCproducts = dabc["Allproducts"]["ListCproducts"]
         #print(dabc_l)
+        global listall
         listall = []
         for i in ListAproducts.keys():
             ai=dabc["Allproducts"]["ListAproducts"][i].values()
@@ -146,9 +147,7 @@ class Ui_MainWindow(object):
 
         #lineEdit = LineEdit_5(self)
 
-        completer = QCompleter(listall)
-        completer.setCaseSensitivity(Qt.CaseInsensitive)
-        self.lineEdit_5.setCompleter(completer)
+        
 
 
         
