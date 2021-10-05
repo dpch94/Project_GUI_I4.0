@@ -81,6 +81,7 @@ class Ui_MainWindow(object):
     now = datetime.datetime.now()
     global timenow
     timenow = int(now.strftime("%Y%m%d%H%M%S%f")[:-4])
+    #print(timenow)
 
     def show_resultA(self):
         # getting current value
@@ -97,6 +98,13 @@ class Ui_MainWindow(object):
         valueC = self.ProductC.value()
         return valueC
 
+    # def getvaluesfromuser(self,text):
+    #     #value= text
+    #     for text() in dabc:
+    #         print(dabc.items())
+
+
+
     def search_clicked(self):   
 
 
@@ -107,43 +115,77 @@ class Ui_MainWindow(object):
         #abc = db.child("Allproducts").get().val()
         abc = db.get().val()
         #print(abc.val())
+        global dabc
         dabc = dict(abc)
         #print(dabc.keys())
-
         #print(dabc["Allproducts"].keys())
+        #dabc_l = len(dabc["Allproducts"]["ListAproducts"].items())
+        
+        ListAproducts = dabc["Allproducts"]["ListAproducts"]
+        ListBproducts = dabc["Allproducts"]["ListBproducts"]
+        ListCproducts = dabc["Allproducts"]["ListCproducts"]
+        #print(dabc_l)
+        listall = []
+        for i in ListAproducts.keys():
+            ai=dabc["Allproducts"]["ListAproducts"][i].values()
+            for j in ai:
+                listall.append(j)
+        #print(listall)
+        for i in ListBproducts.keys():
+            bi=dabc["Allproducts"]["ListBproducts"][i].values()
+            for j in bi:
+                listall.append(j)
+        #print(listall)
+        for i in ListCproducts.keys():
+            ci=dabc["Allproducts"]["ListCproducts"][i].values()
+            for j in ci:
+                listall.append(j)
+        print(listall)
+
+        #wordList = ["alpha", "omega", "omicron", "zeta"]
+
+        #lineEdit = LineEdit_5(self)
+
+        completer = QCompleter(listall)
+        completer.setCaseSensitivity(Qt.CaseInsensitive)
+        self.lineEdit_5.setCompleter(completer)
+
+
         
 
-        #dabc_l = len(dabc["Allproducts"]["ListAproducts"].items())
-        dabc_l = dabc["Allproducts"]["ListAproducts"]
+            #print(ai)
+            #print(ai[0])
         #print(dabc_l)
 
-        row = 0  
-        self.tableWidget.setRowCount(len(dabc_l))
+        # row = 0  
+        # self.tableWidget.setRowCount(len(dabc_l))
 
-        for k,v in dabc["Allproducts"].items():
+        # for k,v in dabc["Allproducts"].items():
 
-            #print(k)
-        #     # print(v)
+        #     #print(k)
+        # #     # print(v)
 
-            for k1,v1 in dabc["Allproducts"][k].items():  #k1 to access order ids of all products
+        #     for k1,v1 in dabc["Allproducts"][k].items():  #k1 to access order ids of all products
 
-                print(v1)
+        #         print(v1)
 
-                ListAproducts = dabc["Allproducts"]["ListAproducts"]
+        #         ListAproducts = dabc["Allproducts"]["ListAproducts"]
 #print(ListAproducts.keys())
 #print(data["Allproducts"]["ListAproducts"]["2021091217282104"])        
 
-                for i in ListAproducts.keys():
-                    ai=dabc["Allproducts"]["ListAproducts"][i].values()
-                    for j in ai:
+                # for i in ListAproducts.keys():
+                #     ai=dabc["Allproducts"]["ListAproducts"][i].values()
+                #     #print(type(ai))
+                #     for j in ai:
 
-                        self.tableWidget.setItem(row,0, PySide2.QtWidgets.QTableWidgetItem(i)) # to display in orderid column of table
-                        
-                        for p in i:
+                #         for row in range(1,14):
 
-                            self.tableWidget.setItem(row,1, PySide2.QtWidgets.QTableWidgetItem(str(j)))
+                #             for col in range(1,12):
+
+                #                 self.tableWidget.setItem(row,col, PySide2.QtWidgets.QTableWidgetItem(i)) # to display in orderid column of table
+                #                 self.tableWidget.setItem(row,col, PySide2.QtWidgets.QTableWidgetItem(str(j)))
                         
-                            row = row+1
+                        #row = row+1
                 #print(type(QtWidgets.QTableWidgetItem(k1)))      
         
 
@@ -183,7 +225,8 @@ class Ui_MainWindow(object):
         #length=len(list)
         for i in range(len(listA)):
             #for j in len(i):
-            aid = str(timenow+i) + "A" + str(i)
+            aid = str(timenow) + "A" + str(i)
+            #print(aid)
             oid = db.child("Allproducts").child("ListAproducts").child(timenow).child(timenow+i).set(aid)
             #db.child("Allproducts").child("ListAproducts").child(timenow).child(timenow+i).update({"i": aid})
             i+=1
@@ -202,7 +245,7 @@ class Ui_MainWindow(object):
         #length=len(list)
         for i in range(len(listB)):
             #for j in len(i):
-            bid = str(timenow+i) + "B" + str(i)
+            bid = str(timenow) + "B" + str(i)
             oid = db.child("Allproducts").child("ListBproducts").child(timenow).child(timenow+i).set(bid)
             #db.child("Allproducts").child("ListBproducts").child(timenow).child(timenow+i).update({"i": bid})
             i+=1
@@ -222,7 +265,7 @@ class Ui_MainWindow(object):
         #length=len(list)
         for i in range(len(listC)):
             #for j in len(i):
-            cid = str(timenow+i) + "C" + str(i)
+            cid = str(timenow) + "C" + str(i)
             oid = db.child("Allproducts").child("ListCproducts").child(timenow).child(timenow+i).set(cid)
             #db.child("Allproducts").child("ListCproducts").child(timenow).child(timenow+i).update({"i": cid})
             i+=1
@@ -471,14 +514,16 @@ class Ui_MainWindow(object):
         __qtablewidgetitem1 = QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
         self.tableWidget.setColumnWidth(1,200)
-        self.search_clicked()
+        #self.search_clicked(self)
         # __qtablewidgetitem2 = QTableWidgetItem()
         # self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         self.tableWidget.setObjectName(u"tableWidget")
-        self.tableWidget.setGeometry(QRect(200, 180, 351, 192))
+        self.tableWidget.setGeometry(QRect(200, 200, 400, 250))
         self.lineEdit_5 = QLineEdit(self.Home)
         self.lineEdit_5.setObjectName(u"lineEdit_5")
-        self.lineEdit_5.setGeometry(QRect(150, 130, 113, 22))
+        self.lineEdit_5.setGeometry(QRect(150, 130, 160, 24))
+        #self.ui.lineEdit_5.textChanged.connect(self.getvaluesfromuser)
+
         self.label = QLabel(self.Home)
         self.label.setObjectName(u"label")
         self.label.setGeometry(QRect(30, 130, 111, 16))

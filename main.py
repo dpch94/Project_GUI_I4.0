@@ -27,6 +27,8 @@ from PyQt5.QtCore import Qt
 
 from ui_main_projectgui7latest import Ui_MainWindow
 from chhart import ChWindow
+from searchpid import TableModel
+
 
 
 
@@ -84,7 +86,8 @@ class MainWindow(QMainWindow):
         self.ui.Stats.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.Statistics))
 
         self.ui.pushButton.clicked.connect(restart)
-        self.ui.pushButton_3.clicked.connect(self.window2)   
+        self.ui.pushButton_3.clicked.connect(self.window2)
+        self.ui.pushButton_2.clicked.connect(self.window3)   
 
         
 
@@ -99,6 +102,11 @@ class MainWindow(QMainWindow):
         
         self.w = ChWindow()
         self.w.show()
+
+    def window3(self,checked):                                             # <===
+        
+        self.w = TableModel()
+        self.w.show()    
         
         
     
@@ -124,6 +132,13 @@ if __name__ == '__main__':
     #window1.show()
 
     sys.exit(app.exec_())
+
+    # app = QtWidgets.QApplication(sys.argv)
+    # ex = Ui_MainWindow()
+    # w = QtWidgets.QMainWindow()
+    # ex.setupUi(w)
+    # w.show()
+    # sys.exit(app.exec_())
 
 
 
