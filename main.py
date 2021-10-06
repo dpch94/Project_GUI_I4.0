@@ -106,6 +106,9 @@ class MainWindow(QMainWindow):
     def window3(self,checked):                                             # <===
         
         self.w = TableModel()
+        self.table = QtWidgets.QTableView()
+        self.table.setModel(self.w)
+        self.w.setCentralWidget(self.table)
         self.w.show()    
         
         

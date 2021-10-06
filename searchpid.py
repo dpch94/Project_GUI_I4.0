@@ -65,15 +65,13 @@ db = firebase.database()
 
 class TableModel(QtCore.QAbstractTableModel):
 
-    
-
-    
-
-    def __init__(self, data):
+    def __init__(self):
         super(TableModel, self).__init__()
         
-        self._data = data
-
+        self.dabc = dict( db.get().val())
+        self._data = self.search_clicked()
+        
+       
     def data(self, index, role):
         if role == Qt.DisplayRole:
             # See below for the nested-list data structure.
@@ -81,75 +79,36 @@ class TableModel(QtCore.QAbstractTableModel):
             # .column() indexes into the sub-list
             return self._data[index.prd()]
 
-    
-
     def prd(self, index):
         # The following takes the first sub-list, and returns
         # the length (only works if all rows are an equal length)
         return len(self._data[0])
 
-
-    # class_instance = ui_main_projectgui7latest.Ui_MainWindow() 
-    # class_instance.search_clicked()
-    
-    # data = class_instance.listall    
-
-
-#class MainWindow(QtWidgets.QMainWindow):
-
-    def search_clicked(self):   
-
-
-        #self.update()
-        firebase = pyrebase.initialize_app(firebaseConfig)
-        db = firebase.database() 
-
-        #abc = db.child("Allproducts").get().val()
-        abc = db.get().val()
-        #print(abc.val())
-        global dabc
-        dabc = dict(abc)
-        #print(dabc.keys())
-        #print(dabc["Allproducts"].keys())
-        #dabc_l = len(dabc["Allproducts"]["ListAproducts"].items())
-        
-        ListAproducts = dabc["Allproducts"]["ListAproducts"]
-        ListBproducts = dabc["Allproducts"]["ListBproducts"]
-        ListCproducts = dabc["Allproducts"]["ListCproducts"]
-        #print(dabc_l)
-        global listall
+    def search_clicked(self):          
+        ListAproducts = self.dabc["Allproducts"]["ListAproducts"]
+        ListBproducts = self.dabc["Allproducts"]["ListBproducts"]
+        ListCproducts = self.dabc["Allproducts"]["ListCproducts"]
         listall = []
         for i in ListAproducts.keys():
-            ai=dabc["Allproducts"]["ListAproducts"][i].values()
+            ai=self.dabc["Allproducts"]["ListAproducts"][i].values()
+            
             for j in ai:
                 listall.append(j)
         #print(listall)
         for i in ListBproducts.keys():
-            bi=dabc["Allproducts"]["ListBproducts"][i].values()
+            bi=self.dabc["Allproducts"]["ListBproducts"][i].values()
             for j in bi:
                 listall.append(j)
         #print(listall)
         for i in ListCproducts.keys():
-            ci=dabc["Allproducts"]["ListCproducts"][i].values()
+            ci=self.dabc["Allproducts"]["ListCproducts"][i].values()
             for j in ci:
                 listall.append(j)
-
-                
-    def __init__(self):
-        super().__init__()
-
-        self.table = QtWidgets.QTableView()
         
         # completer = QtWidgets.QCompleter(TableModel.search_clicked(self).listall)
         # completer.setCaseSensitivity(Qt.CaseInsensitive)
         # self.ui.lineEdit_5.setCompleter(completer)
-        data = TableModel.search_clicked(self).listall
+        #data = TableModel.search_clicked(self).listall
 
-        
-
-        self.model = TableModel(data)
-        self.table.setModel(self.model)
-
-        self.setCentralWidget(self.table)
 
  
