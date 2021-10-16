@@ -64,6 +64,7 @@ class ChWindow(QMainWindow):
 		self.setGeometry(100,60,1000,800)
 		self.show()
 		self.create_bar()
+		
 
 		
 

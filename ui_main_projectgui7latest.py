@@ -15,7 +15,8 @@ from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont,
     QFontDatabase, QIcon, QLinearGradient, QPalette, QPainter, QPixmap,
     QRadialGradient)
 from PyQt5 import QtWidgets
-from PyQt5.QtCore import QTimer, QThread, pyqtSignal
+from PyQt5.QtCore import QTimer, QThread, pyqtSignal, QStringListModel
+
 from PySide2.QtWidgets import *
 import datetime
 import pyrebase
@@ -105,43 +106,55 @@ class Ui_MainWindow(object):
 
 
 
-    def search_clicked(self):   
+    # def search_clicked(self):   
 
 
-        #self.update()
-        firebase = pyrebase.initialize_app(firebaseConfig)
-        db = firebase.database() 
+    #     #self.update()
+    #     firebase = pyrebase.initialize_app(firebaseConfig)
+    #     db = firebase.database() 
 
-        #abc = db.child("Allproducts").get().val()
-        abc = db.get().val()
-        #print(abc.val())
-        global dabc
-        dabc = dict(abc)
-        #print(dabc.keys())
-        #print(dabc["Allproducts"].keys())
-        #dabc_l = len(dabc["Allproducts"]["ListAproducts"].items())
+    #     #abc = db.child("Allproducts").get().val()
+    #     abc = db.get().val()
+    #     #print(abc.val())
+    #     global dabc
+    #     dabc = dict(abc)
+    #     #print(dabc.keys())
+    #     #print(dabc["Allproducts"].keys())
+    #     #dabc_l = len(dabc["Allproducts"]["ListAproducts"].items())
         
-        ListAproducts = dabc["Allproducts"]["ListAproducts"]
-        ListBproducts = dabc["Allproducts"]["ListBproducts"]
-        ListCproducts = dabc["Allproducts"]["ListCproducts"]
-        #print(dabc_l)
-        global listall
-        listall = []
-        for i in ListAproducts.keys():
-            ai=dabc["Allproducts"]["ListAproducts"][i].values()
-            for j in ai:
-                listall.append(j)
-        #print(listall)
-        for i in ListBproducts.keys():
-            bi=dabc["Allproducts"]["ListBproducts"][i].values()
-            for j in bi:
-                listall.append(j)
-        #print(listall)
-        for i in ListCproducts.keys():
-            ci=dabc["Allproducts"]["ListCproducts"][i].values()
-            for j in ci:
-                listall.append(j)
-        print(listall)
+    #     ListAproducts = dabc["Allproducts"]["ListAproducts"]
+    #     ListBproducts = dabc["Allproducts"]["ListBproducts"]
+    #     ListCproducts = dabc["Allproducts"]["ListCproducts"]
+    #     #print(dabc_l)
+    #     self.orders_list = []
+        
+    #     for i in ListAproducts.keys():
+    #         ai=dabc["Allproducts"]["ListAproducts"][i].values()
+    #         self.orders_list.append(i)
+
+    #     self.model = QStringListModel()
+	# 	#self.model.setStringList(['some', 'words', 'in', 'my', 'dictionary'])
+    #     self.model.setStringList(self.orders_list)
+
+    #     self.completer = QCompleter()
+    #     self.completer.setModel(self.model)
+
+    #     self.ui.lineEdit_5 = QLineEdit()
+    #     self.ui.lineEdit_5.setCompleter(self.completer)
+        #self.lineedit.show()    
+        #     for j in ai:
+        #         listall.append(j)
+        # #print(listall)
+        # for i in ListBproducts.keys():
+        #     bi=dabc["Allproducts"]["ListBproducts"][i].values()
+        #     for j in bi:
+        #         listall.append(j)
+        # #print(listall)
+        # for i in ListCproducts.keys():
+        #     ci=dabc["Allproducts"]["ListCproducts"][i].values()
+        #     for j in ci:
+        #         listall.append(j)
+        # print(listall)
 
         #wordList = ["alpha", "omega", "omicron", "zeta"]
 
@@ -686,7 +699,7 @@ class Ui_MainWindow(object):
         #self.b1 = QtWidgets.QPushButton(self)
        # self.b1.setText("click me!")
         self.pushButton.clicked.connect(self.button_clicked)
-        self.pushButton_2.clicked.connect(self.search_clicked)
+        #self.pushButton_2.clicked.connect(self.search_clicked)
         
          
 

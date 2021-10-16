@@ -27,7 +27,7 @@ from PyQt5.QtCore import Qt
 
 from ui_main_projectgui7latest import Ui_MainWindow
 from chhart import ChWindow
-from searchpid import TableModel
+from searchpid import TableWindow
 
 
 
@@ -105,11 +105,11 @@ class MainWindow(QMainWindow):
 
     def window3(self,checked):                                             # <===
         
-        self.w = TableModel()
-        self.table = QtWidgets.QTableView()
-        self.table.setModel(self.w)
-        self.w.setCentralWidget(self.table)
-        self.w.show()    
+        self.t = TableWindow()
+        # self.table = QtWidgets.QTableView()
+        # self.table.setModel(self.w)
+        # self.w.setCentralWidget(self.table)
+        self.t.show()    
         
         
     
